@@ -1,5 +1,6 @@
 <?php 
     class Cuccie extends Prodotti{
+
         public $dimensioneCuccia;
         public $materialeCuccia;
         

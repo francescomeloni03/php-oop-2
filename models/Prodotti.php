@@ -1,5 +1,15 @@
 <?php 
+
+
+require_once __DIR__ . "/../Traits/Peso.php";
+
+
+
     class Prodotti{
+
+        use pesoProdotto;
+
+
         public $nome;
         public $prezzo;
         public $descrizioneOggetto;

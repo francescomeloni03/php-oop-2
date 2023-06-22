@@ -15,6 +15,9 @@ $ListaCuccie = [
     new Cuccie('Letto per cani Milan', 50,'Elegante letto per cani Milan, con bordo alto e spesso, morbido cuscino double-face e accesso ribassato, protegge il tuo pet dal pavimento freddo. Colore: blu con fantasia a zig-zag.','https://shop-cdn-m.mediazs.com/bilder/letto/per/cani/milan/1/800/203813_pla_hundebett_milan_fg_7979_1.jpg', 'L 85 x P 70 x H 24 cm', 'rivestimento: 100% poliestere, imbottitura: 100% fibra di poliestere, fondo: PVC'),
 ];
 
+$ListaCuccie[0]->SetPeso(10,);
+$ListaCuccie[1]->SetPeso(20,);
+
 ?> 
 
 
@@ -71,6 +74,7 @@ $ListaCuccie = [
                                     <p class="card-text"><strong>Descrizione :</strong> <?= $list->descrizioneOggetto ?></p>
                                     <p class="card-text"><strong>Dimensione :</strong> <?= $list->dimensioneCuccia ?></p>
                                     <p class="card-text"><strong>Materiale :</strong> <?= $list->materialeCuccia ?></p>
+                                    <p class="card-text"><strong>Peso :</strong> <?= $list->GetPeso() ?></p>
                                     <a class="btn btn-dark">Acquista Prodotto</a>
                                 </div>
                             </div>
