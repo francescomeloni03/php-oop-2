@@ -5,14 +5,14 @@
 
 
 $ListaGiochi = [
-    new Giochi('Gioco per cani TIAKI palla con sporgenze massaggianti', 3.49 ,'Classica palla gioco per cani, un must per i pelosetti di tutte le taglie, realizzata in materiale robusto, resistente alle intemperie, galleggiante, le sue protuberanze massaggiano le gengive', 'https://shop-cdn-m.mediazs.com/bilder/gioco/per/cani/tiaki/palla/con/sporgenze/massaggianti/9/800/307597_pla_stacheliger_ball_fg_4839_9.jpg',' ca. Ø 8,3 cm', '65 g'),
-    new Giochi('KONG Classic', 6.46 ,'Gioco KONG Classic: l originale! Salta e rimbalza di qua e di là, soddisfa il bisogno di masticare e di giocare del cane, ideale da inseguire, masticare e riportare, riempibile con snack, in caucciù','https://shop-cdn-m.mediazs.com/bilder/kong/classic/2/800/46452_pla_kong_classic_hs_01_2.jpg','ca. L 4,5 x P 4,5 x H 7 cm','9 kg'),
-    new Giochi('Trixie corda gioco per cani', 3 ,'Corda gioco con nodi di Trixie per cani, in diverse misure, perfetta per il tira e molla, contribuisce a pulire gli spazi interdentali in modo giocoso, in cotone robusto ma leggero. ', 'https://shop-cdn-m.mediazs.com/bilder/trixie/corda/gioco/per/cani/8/800/7992_pla_trixie_spieltau_grau_hs8_8.jpg','L 5,4', '10 g'),
+    new Giochi('Gioco per cani TIAKI palla con sporgenze massaggianti', 3.49 ,'Classica palla gioco per cani, un must per i pelosetti di tutte le taglie, realizzata in materiale robusto, resistente alle intemperie, galleggiante, le sue protuberanze massaggiano le gengive', 'https://shop-cdn-m.mediazs.com/bilder/gioco/per/cani/tiaki/palla/con/sporgenze/massaggianti/9/800/307597_pla_stacheliger_ball_fg_4839_9.jpg','9  ',' ca. Ø 8,3 cm', '65 g'),
+    new Giochi('KONG Classic', 6.46 ,'Gioco KONG Classic: l originale! Salta e rimbalza di qua e di là, soddisfa il bisogno di masticare e di giocare del cane, ideale da inseguire, masticare e riportare, riempibile con snack, in caucciù','https://shop-cdn-m.mediazs.com/bilder/kong/classic/2/800/46452_pla_kong_classic_hs_01_2.jpg','4  ','ca. L 4,5 x P 4,5 x H 7 cm','9 kg'),
+    new Giochi('Trixie corda gioco per cani', 3 ,'Corda gioco con nodi di Trixie per cani, in diverse misure, perfetta per il tira e molla, contribuisce a pulire gli spazi interdentali in modo giocoso, in cotone robusto ma leggero. ', 'https://shop-cdn-m.mediazs.com/bilder/trixie/corda/gioco/per/cani/8/800/7992_pla_trixie_spieltau_grau_hs8_8.jpg','6  ','L 5,4', '10 g'),
 ];
 
 $ListaCuccie = [
-    new Cuccie('Cuccia per cani Spike Classic', 92,'Cuccia per cani Spike Classic, in legno di cipresso di Cunningham oleato, con tetto in cartone bitumato a spioventi. Piedini regolabili in altezza, ideale in caso di pioggia.','https://shop-cdn-m.mediazs.com/bilder/cuccia/per/cani/spike/classic/9/400/60837_spike_classic_outside_fg_9141_9.jpg', '54 x 77 x 67 cm', 'legno di cipresso di Cunningham (laccato), tetto: cartone bitumato'),
-    new Cuccie('Letto per cani Milan', 50,'Elegante letto per cani Milan, con bordo alto e spesso, morbido cuscino double-face e accesso ribassato, protegge il tuo pet dal pavimento freddo. Colore: blu con fantasia a zig-zag.','https://shop-cdn-m.mediazs.com/bilder/letto/per/cani/milan/1/800/203813_pla_hundebett_milan_fg_7979_1.jpg', 'L 85 x P 70 x H 24 cm', 'rivestimento: 100% poliestere, imbottitura: 100% fibra di poliestere, fondo: PVC'),
+    new Cuccie('Cuccia per cani Spike Classic', 92,'Cuccia per cani Spike Classic, in legno di cipresso di Cunningham oleato, con tetto in cartone bitumato a spioventi. Piedini regolabili in altezza, ideale in caso di pioggia.','https://shop-cdn-m.mediazs.com/bilder/cuccia/per/cani/spike/classic/9/400/60837_spike_classic_outside_fg_9141_9.jpg','5  ', '54 x 77 x 67 cm', 'legno di cipresso di Cunningham (laccato), tetto: cartone bitumato'),
+    new Cuccie('Letto per cani Milan', 50,'Elegante letto per cani Milan, con bordo alto e spesso, morbido cuscino double-face e accesso ribassato, protegge il tuo pet dal pavimento freddo. Colore: blu con fantasia a zig-zag.','https://shop-cdn-m.mediazs.com/bilder/letto/per/cani/milan/1/800/203813_pla_hundebett_milan_fg_7979_1.jpg','7  ', 'L 85 x P 70 x H 24 cm', 'rivestimento: 100% poliestere, imbottitura: 100% fibra di poliestere, fondo: PVC'),
 ];
 
 $ListaCuccie[0]->SetPeso(10,);
@@ -52,6 +52,16 @@ $ListaCuccie[1]->SetPeso(20,);
                                <p class="card-text"><strong>Prezzo :</strong> <?= $list->prezzo ?>€</p>
                                <p class="card-text"><strong>Descrizione :</strong> <?= $list->descrizioneOggetto ?></p>
                                <p class="card-text"><strong>Dimensione/Peso :</strong> <?= $list->dimensioneGioco, $list->pesoGioco ?></p>
+                               <p class="card-text"><strong>Recensione :</strong> 
+                               <?php
+                               try{
+                                echo $list->getRecensione();
+                               } catch (RangeException $e) {
+                                echo  $list->recensione  .  $e->getMessage();
+                               } catch (Exception $e) {
+                                echo  $list->recensione  .  $e->getMessage();
+                               }
+                               ?> </p>
                                <a class="btn btn-dark">Acquista Prodotto</a>
                         </div>
                     </div>
@@ -75,6 +85,16 @@ $ListaCuccie[1]->SetPeso(20,);
                                     <p class="card-text"><strong>Dimensione :</strong> <?= $list->dimensioneCuccia ?></p>
                                     <p class="card-text"><strong>Materiale :</strong> <?= $list->materialeCuccia ?></p>
                                     <p class="card-text"><strong>Peso :</strong> <?= $list->GetPeso() ?></p>
+                                    <p class="card-text"><strong>Recensione :</strong> 
+                               <?php
+                               try{
+                                echo $list->getRecensione();
+                               } catch (RangeException $e) {
+                                echo  $list->recensione  .  $e->getMessage();
+                               } catch (Exception $e) {
+                                echo  $list->recensione  .  $e->getMessage();
+                               }
+                               ?> </p>
                                     <a class="btn btn-dark">Acquista Prodotto</a>
                                 </div>
                             </div>
